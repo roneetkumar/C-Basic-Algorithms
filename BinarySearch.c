@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
-main()
+void main()
 {
   int arr[30], i, n, search, first, middle, last;
   // clrscr();
@@ -14,22 +14,24 @@ main()
   printf("Enter Element To Search\t");
   scanf("%d", &search);
   first = 0;
-  middle = n - 1;
-  last = (first + last) / 2;
-  while (first <= last)
+  middle = (first + last) / 2;
+  last = n - 1;
+  while (first <= middle)
   {
-    if (arr[middle] < search)
-      first = middle + 1;
-    else if (arr[middle] == search)
+    if (arr[last] < search)
+      first = last + 1;
+    else if (arr[last] == search)
     {
-      printf("%d Found At Location %d", search, middle + 1);
+      printf("%d Found At Location %d", search, last + 1);
       break;
     }
     else
-      last = middle - 1;
-    middle = (first + last) / 2;
+    {
+      middle = (first + last) / 2;
+      last = last - 1;
+    }
   }
-  if (first > last)
+  if (first > middle)
   {
     printf("Element is Not Present in Array");
   }
